@@ -6,11 +6,11 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-base-100">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">
+          <div className="btn btn-ghost text-xl">
             <Link to={"/"}>
               Product Store <i className="fa-solid fa-cart-shopping"></i>
             </Link>
-          </a>
+          </div>
         </div>
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
@@ -22,7 +22,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <a>Link</a>
+              <div>Link</div>
             </li>
           </ul>
         </div>

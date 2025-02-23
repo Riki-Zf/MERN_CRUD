@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useProductStore } from "../../store/product";
 
 const CreatePage = () => {
   const [newProduct, setNewProduct] = useState({
@@ -7,8 +8,20 @@ const CreatePage = () => {
     image: "",
   });
 
-  const handleAddProduct = () => {
-    console.log(newProduct);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+
+  //api
+  const { createProduct } = useProductStore();
+  const handleAddProduct = async () => {
+    const { success, message } = await createProduct(newProduct);
+    if (success) {
+      setToastMessage(message);
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+    }
   };
   return (
     <>
@@ -56,6 +69,14 @@ const CreatePage = () => {
           </button>
         </div>
       </div>
+
+      {showToast && (
+        <div className="toast fixed z-50">
+          <div className="alert alert-info">
+            <span>{toastMessage}</span>
+          </div>
+        </div>
+      )}
     </>
   );
 };
