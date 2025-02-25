@@ -22,6 +22,7 @@ const CreatePage = () => {
         setShowToast(false);
       }, 3000);
     }
+    setNewProduct({ name: "", price: "", image: "" });
   };
   return (
     <>
@@ -34,6 +35,7 @@ const CreatePage = () => {
               type="text"
               className="grow"
               placeholder="Enter Name"
+              required
               value={newProduct.name}
               onChange={(e) => {
                 setNewProduct({ ...newProduct, name: e.target.value });
@@ -46,6 +48,7 @@ const CreatePage = () => {
               type="text"
               className="grow"
               placeholder="Enter price"
+              required
               value={newProduct.price}
               onChange={(e) => {
                 setNewProduct({ ...newProduct, price: e.target.value });
@@ -58,6 +61,7 @@ const CreatePage = () => {
               type="text"
               className="grow"
               placeholder="Enter image URL"
+              required
               value={newProduct.image}
               onChange={(e) => {
                 setNewProduct({ ...newProduct, image: e.target.value });
